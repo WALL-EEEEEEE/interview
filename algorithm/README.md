@@ -30,12 +30,11 @@ int binaryOrderSearch(int dest_arr[], int search, int array_size) {
     int left = 0;
     int right = alen-1;
     while(right-left > 0) {
+        amid = (left+ right) /2;
         if (dest_arr[amid] < search) {
             left = amid+1;
-            amid = (left+ right) /2;
         } else if (dest_arr[amid] > search) {
             right = amid-1;
-            amid = (left+right)/2;
         } else {
             return amid;
         }
