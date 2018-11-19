@@ -4,6 +4,7 @@
 ## 常用的排序算法
 
 ### 快速排序
+&ensp;&ensp;&ensp;&ensp;快速排序的最坏时间复杂度为$O(n^2)$,但平均复杂度为： $O(nlog_2n)$
 
 #### cpp实现
 
@@ -75,6 +76,51 @@ void quicksort(int a[],int left, int right)
     a[i] = temp;
     quicksort(a,left,i-1);
     quicksort(a,i+1,right);
+}
+```
+
+3. 
+```cpp
+template <class Type>
+int Partition(Type arr[], int p , int r) {
+    int pivot = arr[p];
+    int highvac = r;
+    int lowvac = p;
+    bool direct = true; //true for right, false for left 
+    while(highvac > lowvac) {
+        if (direct == true) {
+            if(arr[highvac] <= pivot) {
+                arr[lowvac] = arr[highvac];
+                lowvac++;
+                direct = false;
+            } else {
+                highvac--;
+            } 
+        } else {
+            if(arr[lowvac]> pivot ) {
+                arr[highvac] = arr[lowvac];
+                highvac--;
+                direct = true;
+            }else {
+                lowvac++;
+            }
+        }
+        if (r-p==6) {
+            printArray(arr,p,r+1);
+        }
+    }
+    arr[highvac] = pivot;
+    //printArray(arr,p,r+1);
+    return highvac;
+}
+
+template<class Type>
+void QuickSort(Type arr[], int p, int r) {
+    if (p < r) {
+        int q = Partition(arr,p,r);
+        QuickSort(arr,p,q-1);
+        QuickSort(arr,q+1,r);
+    }
 }
 ```
 
