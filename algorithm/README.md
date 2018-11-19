@@ -105,12 +105,8 @@ int Partition(Type arr[], int p , int r) {
                 lowvac++;
             }
         }
-        if (r-p==6) {
-            printArray(arr,p,r+1);
-        }
     }
     arr[highvac] = pivot;
-    //printArray(arr,p,r+1);
     return highvac;
 }
 
