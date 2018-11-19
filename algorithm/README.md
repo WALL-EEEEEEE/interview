@@ -1,6 +1,84 @@
 # 面试算法&数据结构
 
-## 常用顺序查找算法
+
+## 常用的排序算法
+
+### 快速排序
+
+#### cpp实现
+
+1.
+```cpp
+template <class Type>
+void Swap(Type *a, Type *b) {
+    Type tmp = *a;
+    *a = *b;
+    *b = tmp; 
+}
+
+template <class Type>
+int Partition(Type arr[], int p , int r) {
+    int i = p, j = r;
+    Type x = arr[p];
+    while(true) {
+        while(arr[j]> x && i < j)  {
+            j--;
+        }
+        while(arr[i]<= x && i < j ) {
+            i++;
+        } 
+        if (i == j) break;
+        Swap(&arr[i],&arr[j]);
+    }
+    Swap(&arr[p], &arr[j]);
+    return j;
+}
+
+template<class Type>
+void QuickSort(Type arr[], int p, int r) {
+    if (p < r) {
+        int q = Partition(arr,p,r);
+        QuickSort(arr,p,q-1);
+        QuickSort(arr,q+1,r);
+    }
+}
+
+```
+
+2.
+```cpp
+void quicksort(int a[],int left, int right)
+{
+    int i,j,t,temp;
+    if (left > right) 
+        return;
+    temp = a[left];
+    i = left;
+    j = right;
+    while(i != j) 
+    {
+        while(a[j] >= temp && i < j) {
+            j--;
+        }
+        while(a[i] <= temp && i < j) {
+            i++;
+        }
+        if (i < j) 
+        {
+            t = a[i];
+            a[i] = a[j];
+            a[j] = t;
+        }
+    }
+
+    a[left] = a[i];
+    a[i] = temp;
+    quicksort(a,left,i-1);
+    quicksort(a,i+1,right);
+}
+```
+
+## 常用查找算法
 
 ### 顺序查找
 
