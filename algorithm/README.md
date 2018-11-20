@@ -165,3 +165,64 @@ int binaryOrderSearch(int dest_arr[], int search, int array_size) {
 
 
 ### 分块/索引查找
+
+
+## 其他算法
+
+### 查找数组中的前M大的数
+
+#### cpp实现
+
+```cpp
+int Partition(int arr[], int start, int end) {
+    int pivot = arr[start];
+    int highvac = end;
+    int lowvac = start;
+    int direct = true; //true for right,false for left. start from left 
+    while(lowvac < highvac) {
+        if(direct == true) {
+            if(arr[highvac] <pivot) {
+                arr[lowvac] = arr[highvac];
+                lowvac++;
+                direct = false;
+            } else {
+                highvac--;
+            }
+        } else {
+            if(arr[lowvac] > pivot) {
+                arr[highvac] = arr[lowvac];
+                highvac--;
+                direct = true;
+            } else {
+                lowvac++;
+            }
+        }
+    }
+    arr[highvac] = pivot;
+    return highvac;
+}
+
+int*  findXMaxValue(int arr[], int xmax, int start, int end) {
+    int p = 0;
+    static int*  maxs = new int[xmax];
+    int cmax = end - start +1;
+    int len  = end;
+    if (xmax >= len+1) {
+        return arr;
+    }
+    while(cmax != xmax) {
+       p = Partition(arr,start,end);
+       cmax = len-p+1;
+        if(cmax > xmax) {
+            start = p+1;
+        }  else if ( cmax < xmax)  {
+            end = p-1;
+            start = 0;
+        }
+    }
+    for(int j = 0; j < xmax;  j++) {
+        maxs[j] = arr[p+j];
+    }
+    return maxs;
+}
+```
