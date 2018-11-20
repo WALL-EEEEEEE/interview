@@ -49,6 +49,8 @@ int*  findXMaxValue(int arr[], int xmax, int start, int end) {
     }
     while(cmax != xmax) {
        p = Partition(arr,start,end);
+       cout << "Partition:" << endl;
+       cout << p << endl;
        cmax = len-p+1;
         if(cmax > xmax) {
             start = p+1;
@@ -64,11 +66,11 @@ int*  findXMaxValue(int arr[], int xmax, int start, int end) {
 }
 
 int main(int argc, char** argv) {
-    int test_arr[] = {1,2,3,1};
+    int test_arr[] = {1,2,3,1,1,1,11};
     cout << "Original array:"  << endl;
     printArray(test_arr,0,sizeof(test_arr)/sizeof(*test_arr)-1);
     cout << "---------------------------------------------------------------------------" << endl;
-    int max_num =  5;
+    int max_num =  2;
     int* maxs;
     maxs  = findXMaxValue(test_arr,max_num,0,sizeof(test_arr)/sizeof(*test_arr)-1);
     cout << "After array:" << endl;
