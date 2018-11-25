@@ -13,6 +13,7 @@
 ```
 
 + 复杂度
+
 &ensp;&ensp;&ensp;&ensp;快速排序的最坏时间复杂度为 `O(n^2)` ,但平均复杂度为： `O(nlog_2n)`
 
 
@@ -323,7 +324,6 @@ block* blockIndex(int dest_arr[],int block_num, int array_size) {
 + 思路
 
 ```
-
 ```
 
 #### cpp实现
