@@ -203,6 +203,12 @@ int binaryOrderSearch(int dest_arr[], int search, int array_size) {
 
 ### 分块/索引查找
 
++ 思路
+
+```
+
+```
+
 #### cpp实现
 
 ```cpp
@@ -342,14 +348,20 @@ block* blockIndex(int dest_arr[],int block_num, int array_size) {
 
 ### 查找数组中的前M大的数
 
-+ 算法复杂度
-
-&ensp;&ensp;平均算法复杂度为：O(n) = n, 最坏情况的复杂度为：O(n)
-
 + 思路
 
 ```
+根据快速排序的Partition的思想，假定数组长度为n, 选定一个pivot,总能将数组分为 [0,k-1]和[k,n], 
+其中[0,k-1]<pivot,[k+1,n] > pivot。如果 k = m, 那么算法结束。如果k > m, 对[k+1,n]继续进行切分,
+每次切分k都会减少一部分, 直到k = m, 如果k < m, 对[0,k-1]继续切分出m-k个大的数， 每次切分k都会
+增加一部分，直到k = m。 
 ```
+
++ 算法复杂度
+
+&ensp;&ensp;&ensp;&ensp;平均算法复杂度为：O(n) = n，最坏情况的复杂度为：O(n) = n。
+
+
 
 #### cpp实现
 
