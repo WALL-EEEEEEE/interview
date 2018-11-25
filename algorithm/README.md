@@ -525,7 +525,9 @@ int main(int argc, char** argv) {
 ```
 > **Note:** 由于效率的考虑，排序算法需要用快速排序，才能AC
 
-+ 
++ 算法复杂度
+
+&ensp;&ensp;&ensp;&ensp; 算法的平均复杂度：O(n) = logn + n + n-1 = n ；算法的最坏情况下的复杂度：O(n) = n^2+ n + n-1 = n^2。
 
 #### cpp实现
 
