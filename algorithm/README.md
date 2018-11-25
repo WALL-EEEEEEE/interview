@@ -4,7 +4,18 @@
 ## 常用的排序算法
 
 ### 快速排序
+
++ 思路
+
+```
+选定一个pivot, 移动元素使得pivot左右两边的元素，一边大于pivot, 一边小于pivot, 然后
+分别对左右两边递归进行同样的操作，最后得到一个有序排列。
+```
+
++ 复杂度
 &ensp;&ensp;&ensp;&ensp;快速排序的最坏时间复杂度为 `O(n^2)` ,但平均复杂度为： `O(nlog_2n)`
+
+
 
 #### cpp实现
 
@@ -305,6 +316,16 @@ block* blockIndex(int dest_arr[],int block_num, int array_size) {
 
 ### 查找数组中的前M大的数
 
++ 算法复杂度
+
+&ensp;&ensp;平均算法复杂度为：O(n) = n, 最坏情况的复杂度为：O(n)
+
++ 思路
+
+```
+
+```
+
 #### cpp实现
 
 ```cpp
@@ -391,6 +412,7 @@ int*  findXMaxValue(int arr[], int xmax, int start, int end) {
 那么前n项的和可以看作这些块的总和：S_n = x*m^2 = n/(2*m)*m^2 = n/2 * m
 ```
 
+#### cpp实现
 
 ```cpp
 #include <iostream>
@@ -449,6 +471,8 @@ int main(int argc, char** argv) {
 比如: 2 7 4 ->(排序) 7 4 2  -> (倒置) -> 7 -4 2 -> (求前n项和) 7 + (-4) + 2 = 5
 ```
 > **Note:** 由于效率的考虑，排序算法需要用快速排序，才能AC
+
+#### cpp实现
 
 ```cpp
 #include<iostream>
