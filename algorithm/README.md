@@ -14,7 +14,7 @@
 
 + 复杂度
 
-&ensp;&ensp;&ensp;&ensp;快速排序的最坏时间复杂度为: O(n) = n^2 ,但平均复杂度为： O(n) = nlogn
+&ensp;&ensp;&ensp;&ensp;快速排序的最坏时间复杂度为: O(n) = n^2，但平均复杂度为： O(n) = nlogn
 
 
 
@@ -144,7 +144,7 @@ void QuickSort(Type arr[], int p, int r) {
 
 + 算法复杂度
 
-平均算法复杂度为：O(n)= n; 最坏情况的算法复杂度为：O(n) = n;
+&ensp;&ensp;&ensp;&ensp;平均算法复杂度为：O(n)= n; 最坏情况的算法复杂度为：O(n) = n;
 
 #### cpp实现
 
@@ -174,7 +174,7 @@ int orderSearch(int dest_arr[],int  dest) {
 
 + 算法复杂度
 
-平均算法复杂度为： O(n) = logn;最坏情况的算法复杂度为： O(n) = logn;
+&ensp;&ensp;&ensp;&ensp;平均算法复杂度为： O(n) = logn；最坏情况的算法复杂度为： O(n) = logn;
 
 
 #### cpp实现
