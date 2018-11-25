@@ -206,8 +206,16 @@ int binaryOrderSearch(int dest_arr[], int search, int array_size) {
 + 思路
 
 ```
+前提： 1.块间有序 2.块内可以无序 3.索引中保存块的起始地址，和块内的最大值或者最小值
+   
+首先对索引进行折半查找，然后对块内进行顺序查找。
 
 ```
+
++ 算法复杂度
+
+&ensp;&ensp;&ensp;&ensp;假设一个n长度的数组分为m块，每块的长度为： n/m, 那么算法的平均复杂度：
+O(n) = logm+n/m, 算法最坏情况下的复杂度： O(n) = logm + n/m。
 
 #### cpp实现
 
