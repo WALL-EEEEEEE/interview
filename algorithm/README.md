@@ -136,7 +136,18 @@ void QuickSort(Type arr[], int p, int r) {
 
 ### 顺序查找
 
++ 思路
+
+```
+从数组的开头到结尾,顺序挨个比较查找。
+```
+
++ 算法复杂度
+
+平均算法复杂度为：O(n)= n; 最坏情况的算法复杂度为：O(n) = n;
+
 #### cpp实现
+
 ```cpp
 int orderSearch(int dest_arr[],int  dest) {
 
@@ -151,6 +162,20 @@ int orderSearch(int dest_arr[],int  dest) {
 ```
 
 ### 二分/折半查找
+
++ 思路
+
+```
+前提： 数组必须是已经排好序的有序数组。
+
+假设数组为升序排列，把数组一分为二，取中间点mid做比较，如果比mid大, 那么继续在[mid+1,last]中查找，反之
+在[first,mid-1]中查找，对子数组继续进行上述操作,直到找到。
+```
+
++ 算法复杂度
+
+平均算法复杂度为： O(n) = logn;最坏情况的算法复杂度为： O(n) = logn;
+
 
 #### cpp实现
 
