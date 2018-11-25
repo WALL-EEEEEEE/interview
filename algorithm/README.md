@@ -14,7 +14,7 @@
 
 + 复杂度
 
-&ensp;&ensp;&ensp;&ensp;快速排序的最坏时间复杂度为 `O(n^2)` ,但平均复杂度为： `O(nlog_2n)`
+&ensp;&ensp;&ensp;&ensp;快速排序的最坏时间复杂度为: O(n) = n^2 ,但平均复杂度为： O(n) = nlogn
 
 
 
