@@ -34,95 +34,88 @@
  *
  *
  *
+ * problem-solving idea:
+ *
+ * 1. sort machine and tasks in descend order to make sure tasks with max revenue consume at first(assure max revenue).
+ * 2. pick up machine level of which is most nearby to task to avoid machine with high level to be consumed. (assure max tasks consumed)
+ *
  */
 #include<iostream>
-#include<vector>
-#include<map>
+#include<algorithm>
+
 using namespace std;
-vector<int> machine_arrangement(vector<vector<int>> machines, vector<vector<int>> tasks, int machine_number, int task_number) {
-    int tasks_count = 0;
-    int total_revenue = 0;
-    map<vector<int>,vector<vector<int>>> avail_tasks;
-    map<vector<int>,vector<int>> optimal_tasks;
-    //filter tasks by each machine
-    for(auto machine :machines) {
-        int max_revenue = 0;
-        auto task_id = tasks.begin();
-        auto max_task_id = tasks.begin(); 
 
-        vector<vector<int>> tmp_tasks;
-        for(auto it = task_id; it != tasks.cend() ; it++){
-            if(machine[0] >= (*it)[0] && machine[1] >= (*it)[1]) {
-                int cur_revenue = 200*(*it)[0] + 3*(*it)[1];
-                if(cur_revenue>max_revenue) {
-                    max_revenue = cur_revenue;
-                    max_task_id = it;
-                }
-                tmp_tasks.push_back(*it);
+// time and level pairs storing time and level infos
+
+struct tl_pairs {
+    int time;
+    int level;
+} tasks[100001],machines[100001];
+
+
+long long* machine_schedule(tl_pairs* machines,tl_pairs* tasks,int m_number, int t_number){
+    struct rcmp {
+        bool operator() (const tl_pairs &lhs, const tl_pairs &rhs) {
+            if (lhs.time == rhs.time) {
+                return lhs.level > rhs.level;
             }
-            cout << "tasks size:" << tasks.size() << endl;
+            return lhs.time > rhs.time;
         }
-        avail_tasks[machine] = tmp_tasks;
-        if (max_revenue!=0) {
-            tasks_count++;
-            total_revenue+=max_revenue;
-            optimal_tasks[machine] = *max_task_id;
-            tasks.erase(max_task_id);
+    } rcmp;
+    struct cmp {
+        bool operator() (const tl_pairs &lhs, const tl_pairs &rhs) {
+            if (lhs.time == rhs.time) {
+                return lhs.level < rhs.level;
+            }
+            return lhs.time < rhs.time;
+        }
+    } cmp;
+ 
+    //sort machines in descend order
+    sort(machines,machines+m_number,rcmp);
+    sort(tasks,tasks+t_number,rcmp);
+    long long revenue = 0;
+    int count = 0;
+    int levels[101] = {0};
+    static long long results[2] = {0};
+
+    for(int i = 0,j=0; i <t_number; i++) {
+
+        while(j != m_number && tasks[i].time <= machines[j].time) {
+            levels[machines[j].level]++;
+            j++;
+        }
+        for( int k = tasks[i].level; k < 101; k++) {
+            if(levels[k]) {
+                revenue+= 200*tasks[i].time+3*tasks[i].level;
+                levels[k]--;
+                count++;
+                break;
+            }
         }
     }
-    for(auto machine :optimal_tasks) {
-        vector<int> m = machine.first;
-        vector<int> ts = machine.second;
-        cout << "machine :("  << m[0] << ","<< m[1] << ")" << endl;
-        cout << "{" << endl;
-        cout << "optimal_task: " << ts[0] << "," << ts[1] << endl;
-        cout << "}" << endl;
-    }
+    results[0] = count;
+    results[1] = revenue;
+    return results;
 
-
-    vector<int> result{tasks_count,total_revenue};
-
-    return result;
 }
 
-int main(int argc, char** argv) {
-    int machine_number;
-    int task_number;
-    vector<vector<int>> machines;
-    vector<vector<int>> tasks;
-    cin >> machine_number;
-    cin >> task_number;
-    for(int i = 0; i < machine_number; i++) {
-        int time = 0, level =0;
+int main(int argc, char** argvs) {
+    int m_number;
+    int t_number;
+    cin>> m_number >> t_number;
+    cin.ignore();
+    for(int i = 0; i < m_number;i++) {
+        cin >> machines[i].time >> machines[i].level;
         cin.ignore();
-        cin >> time;
-        cin >> level;
-        vector<int> desc{time, level};
-        machines.push_back(desc);
     }
-
-    for(int j = 0; j < task_number; j++) {
-        int time = 0, level =0;
+    for(int j = 0; j < t_number; j++) {
+        cin >> tasks[j].time >> tasks[j].level;
         cin.ignore();
-        cin >> time;
-        cin >> level;
-        vector<int> desc {time, level};
-        tasks.push_back(desc);
     }
-    vector<int> result = machine_arrangement(machines,tasks,machine_number,task_number);
-    cout << result[0] << " " << result[1] << endl;
-    /**
-    cout << "machine_number: " << machine_number << endl;
-    cout << "task_number:" << machine_number << endl;
-    cout << "machines:" << endl;
-    for(auto i: machines) {
-        cout << "time:" << i[0] << ",level:" << i[1]  << endl;
-    }
-    cout << "tasks:" << endl;
-    for (auto j: tasks) {
-        cout << "time:" << j[0] << ",level:" << j[1] << endl;
-    }
-    **/
-
+    long long* results;
+    results = machine_schedule(machines,tasks, m_number, t_number);
+    cout << *results << " "  << *(results+1) << endl;
+    return 0;
 }
 

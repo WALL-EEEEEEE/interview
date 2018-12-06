@@ -51,3 +51,84 @@
  *
  *
  */
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int qpainter(int rows, int cols, char **palette) {
+    int total = 0;
+    char** p = palette;
+
+    for(int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++){
+            if(p[i][j] == 'Y' || p[i][j] == 'G') {
+                int k = 0;
+                while((i+k < rows && j+k < cols) && (p[i+k][j+k] == 'Y' || p[i+k][j+k] == 'G')) {
+                    if (p[i+k][j+k] == 'Y') {
+                        p[i+k][j+k] = 'X';
+                    } else {
+                        p[i+k][j+k] = 'B';
+                    }
+                    k++;
+                }
+                total+=1;
+            }
+            if (p[i][j] == 'B' || p[i][j] == 'G') {
+                int k = 0;
+                while((i+k < rows && j-k >= 0) && (p[i+k][j-k] == 'B' || p[i+k][j-k] == 'G')) {
+                    if (p[i+k][j-k] == 'B') {
+                        p[i+k][j-k] = 'X';
+                    } else {
+                        p[i+k][j-k] = 'Y';
+                    }
+                    k++;
+                }
+                total+=1;
+                }
+        }
+    }
+    for(int i = 0; i < rows;i++) {
+        for(int j = 0; j < cols; j++) {
+            switch(p[i][j]) {
+                case 'Y':
+                    total+=1;
+                    break;
+                case 'B':
+                    total+=1;
+                    break;
+                case 'G':
+                    total+=2;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    return total;
+}
+
+int main(int argc, char** argv) {
+     int cols, rows;
+     int steps = 0;
+     cin >> rows >> cols;
+     char **p;
+     char *ptr;
+     /**
+     p= (char **)malloc(sizeof(char*)*rows);
+     for (int k = 0; k < rows; k++) {
+         p[k] = (char*)malloc(sizeof(char)*cols);
+     }
+     **/
+     p = (char**)malloc(sizeof(char*)*rows+sizeof(char)*rows*cols);
+     ptr = (char*)(p+rows);
+     cin.ignore();
+     for(int i = 0; i < rows;i++) {
+         for(int j = 0; j < cols; j++) {
+             cin >> p[i][j];
+         }
+         cin.ignore();
+     }
+    steps = qpainter(rows,cols,p);
+    cout << steps << endl;
+}
