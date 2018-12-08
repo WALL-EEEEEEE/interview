@@ -110,3 +110,25 @@ print(myclass1.name)
 print(myclass2.name)
 print(myclass3.name)
 ```
+
+> **Note:** 这里创建的实例都指向类属性 `_state` , 由于 `dict` 时可变对象，所以是赋值时是复制引用，所以所创建的实例都共用类属性，从而实现单例模式。
+
+
+5. 利用模块实现单例模式
+
+&ensp;&ensp;&ensp;&ensp; `python` 中的模块导入是单例模式的，所以我们可以利用模块机制来实现单例模式。
+
+```python
+#singleton.py
+class singleton(object):
+    def func(self):
+        pass
+
+single =  singleton()
+
+# use
+from singleton import single
+
+single.foo()
+```
+
