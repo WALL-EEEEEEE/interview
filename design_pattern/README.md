@@ -3,7 +3,9 @@
 ### 单例模式
 
 #### python实现
+&ensp;&ensp;&ensp;&ensp; `python` 实现单例模式有很多种方法。
 
+1. 利用 `__new__` 实现
 ```python
 class singleton():
 
