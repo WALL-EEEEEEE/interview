@@ -28,6 +28,7 @@ print("myClass2's name: " + myClass2.name)
 ```
 
 2. 利用 `元类` 实现
+
 &ensp;&ensp;&ensp;&ensp; `python` 中 `元类(metaclass)` 可以控制类的创建过程。我们可以利用它来实现单例模式。
 
 ```python
