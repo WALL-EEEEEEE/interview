@@ -132,6 +132,37 @@ void QuickSort(Type arr[], int p, int r) {
 }
 ```
 
+### 冒泡排序
+
++ 思路
+
+```
+模拟水中的冒泡过程, 大的水泡总是从底部不断的超过小的水泡，最终上升到水面。冒泡排序也是，从左到右，小的数不断的从右边冒泡上升到左边，最终实现有序。
+```
+
++ 复杂度
+
+&ensp;&ensp;&ensp;&ensp;冒泡排序的最坏时间复杂度为: O(n) = n^2，平均复杂度为： O(n) = n^2
+
+#### python实现
+
+```python
+def bubblesort(arr):
+    for i in range(0,len(arr)):
+        for k in range(0,len(arr)-i-1):
+            if arr[k]>arr[k+1]:
+                tmp =  arr[k]
+                arr[k] = arr[k+1]
+                arr[k+1] = tmp
+    return arr
+
+us = [1,2,0,-1]
+print(bubblesort(us))
+us1 = [6,8,0,2,1]
+print(bubblesort(us1))
+```
+
+
 ## 常用查找算法
 
 ### 顺序查找
