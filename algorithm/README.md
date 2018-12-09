@@ -7,6 +7,8 @@
             * [cpp实现](#cpp实现)
          * [冒泡排序](#冒泡排序)
             * [python实现](#python实现)
+         * [插入排序](#插入排序)
+            * [python实现](#python实现-1)
       * [常用查找算法](#常用查找算法)
          * [顺序查找](#顺序查找)
             * [cpp实现](#cpp实现-1)
@@ -22,7 +24,7 @@
          * [纸牌游戏](#纸牌游戏)
             * [cpp实现](#cpp实现-6)
 
-<!-- Added by: johans, at: 2018-12-09T18:35+08:00 -->
+<!-- Added by: johans, at: 2018-12-09T22:33+08:00 -->
 
 <!--te-->
 
@@ -187,6 +189,45 @@ us = [1,2,0,-1]
 print(bubblesort(us))
 us1 = [6,8,0,2,1]
 print(bubblesort(us1))
+```
+
+### 插入排序
+
++ 思路
+
+```
+插入排序是最直观和自然的排序，它是从左到右，将一个数从它为起始位置 `loc` ，从右向左，进行比较，
+如果 `array[loc-1] < array[loc]` 或者 `loc = 0` ，那么就将这个数插入loc位置，否则 `loc` 位置左移( `loc = loc -1` )继续进行比较，直到数组有序。
+```
+
++ 算法复杂度
+
+&ensp;&ensp;&ensp;&ensp;插入排序的最坏时间复杂度为: O(n) = n^2，平均复杂度为： O(n) = n^2
+
+#### python实现
+
+```python
+def shift_vac(arr,vac_loc,vac):
+    loc = 0
+    while vac_loc > 0:
+        if arr[vac_loc-1] <= vac:
+            loc = vac_loc
+            break
+        arr[vac_loc] = arr[vac_loc-1]
+        vac_loc-=1
+
+    return loc
+def insert_sort(arr):
+    for i in range(0,len(arr)):
+        v = arr[i] 
+        loc = shift_vac(arr,i,v)
+        arr[loc] = v
+    return arr
+
+us = [1,2,0,-1]
+us1 = [6,8,0,2,1]
+print(insert_sort(us))
+print(insert_sort(us1))
 ```
 
 
