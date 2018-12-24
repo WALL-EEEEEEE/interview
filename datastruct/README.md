@@ -5,7 +5,9 @@
       * [堆（左完全二叉树）](#堆左完全二叉树)
          * [实现](#实现)
             * [递归实现](#递归实现)
+               * [python实现](#python实现)
             * [非递归实现](#非递归实现)
+               * [python实现](#python实现-1)
 
 <!-- Added by: johans, at:  -->
 
@@ -59,7 +61,7 @@ class BTNode:
 
 #### 递归实现
 
-+ python实现
+##### python实现
 
 ```python
 
@@ -69,89 +71,89 @@ class BTNode:
 
 `堆`构建的非递归实现，这里我们可以通过`层次遍历`二叉树来生成一个`堆`结构
 
-+ python实现
+##### python实现
 
-  1. 构建最小堆
+1. 构建最小堆
 
-     ```python
-     # 构建一个最小堆
-     def construct_minheap(arr):
-         if arr == None or len(arr) <= 0:
-             return None
-         heap = None
-         for v in arr:
-             cnode = heap
-             if heap != None:
-                 inodes = [heap]
-                 while len(inodes) > 0:
-                     tnodes = []
-                     for inode in inodes:
-                         if inode.value > v:
-                             tmp = inode.value
-                             inode.value = v
-                             v = tmp
-                             tnodes = inodes
-                             break
-                         if inode.left == None:
-                             inode.left = BTNode()
-                             cnode = inode.left
-                             tnodes=[]
-                             break
-                         elif inode.right == None:
-                             inode.right = BTNode()
-                             cnode = inode.right
-                             tnodes = []
-                             break
-                         else:
-                             tnodes.append(inode.left)
-                             tnodes.append(inode.right)
-                     inodes = tnodes
-                 cnode.value = v
-             else:
-                 heap = BTNode()
-                 heap.value = v
-         return heap
-     ```
+   ```python
+   # 构建一个最小堆
+   def construct_minheap(arr):
+       if arr == None or len(arr) <= 0:
+           return None
+       heap = None
+       for v in arr:
+           cnode = heap
+           if heap != None:
+               inodes = [heap]
+               while len(inodes) > 0:
+                   tnodes = []
+                   for inode in inodes:
+                       if inode.value > v:
+                           tmp = inode.value
+                           inode.value = v
+                           v = tmp
+                           tnodes = inodes
+                           break
+                       if inode.left == None:
+                           inode.left = BTNode()
+                           cnode = inode.left
+                           tnodes=[]
+                           break
+                       elif inode.right == None:
+                           inode.right = BTNode()
+                           cnode = inode.right
+                           tnodes = []
+                           break
+                       else:
+                           tnodes.append(inode.left)
+                           tnodes.append(inode.right)
+                   inodes = tnodes
+               cnode.value = v
+           else:
+               heap = BTNode()
+               heap.value = v
+       return heap
+   ```
 
-  2. 构建最大堆
+2. 构建最大堆
 
-  3. ```python
-     # 构建一个最大堆
-     def construct_maxheap(arr):
-         if arr == None or len(arr) <= 0:
-             return None
-         heap = None
-         for v in arr:
-             cnode = heap
-             if heap != None:
-                 inodes = [heap]
-                 while len(inodes) > 0:
-                     tnodes = []
-                     for inode in inodes:
-                         if inode.value < v:
-                             tmp = inode.value
-                             inode.value = v
-                             v = tmp
-                             tnodes = inodes
-                             break
-                         if inode.left == None:
-                             inode.left = BTNode()
-                             cnode = inode.left
-                             tnodes=[]
-                             break
-                         elif inode.right == None:
-                             inode.right = BTNode()
-                             cnode = inode.right
-                             tnodes = []
-                             break
-                         else:
-                             tnodes.append(inode.left)
-                             tnodes.append(inode.right)
-                     inodes = tnodes
-                 cnode.value = v
-             else:
-                 heap = BTNode()
-                 heap.value = v
-         return heap
-     ```
+3. ```python
+   # 构建一个最大堆
+   def construct_maxheap(arr):
+       if arr == None or len(arr) <= 0:
+           return None
+       heap = None
+       for v in arr:
+           cnode = heap
+           if heap != None:
+               inodes = [heap]
+               while len(inodes) > 0:
+                   tnodes = []
+                   for inode in inodes:
+                       if inode.value < v:
+                           tmp = inode.value
+                           inode.value = v
+                           v = tmp
+                           tnodes = inodes
+                           break
+                       if inode.left == None:
+                           inode.left = BTNode()
+                           cnode = inode.left
+                           tnodes=[]
+                           break
+                       elif inode.right == None:
+                           inode.right = BTNode()
+                           cnode = inode.right
+                           tnodes = []
+                           break
+                       else:
+                           tnodes.append(inode.left)
+                           tnodes.append(inode.right)
+                   inodes = tnodes
+               cnode.value = v
+           else:
+               heap = BTNode()
+               heap.value = v
+       return heap
+   ```
 
