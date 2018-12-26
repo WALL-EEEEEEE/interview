@@ -517,10 +517,9 @@ if __name__ == "__main__":
     maxheap_sort(arr)
     print("sorted_arr:")
     print(arr)
-
 ```
-
-
+> **Note:** 
+堆排序的算法主要的难点是如果构建最小堆和最大堆。
 ## 常用查找算法
 
 ### 顺序查找
