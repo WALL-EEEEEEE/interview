@@ -65,7 +65,10 @@ class BTNode:
 ##### python实现
 
 ```python
-
+def construct_minheap(arr):
+    pass
+def construct_maxheap(arr):
+    pass
 ```
 
 #### 非递归实现
