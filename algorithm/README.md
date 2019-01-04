@@ -525,12 +525,12 @@ if __name__ == "__main__":
     print(arr)
 ```
 > **Note:** 
-堆排序的算法主要的难点是如果构建最小堆和最大堆。
-=======
+>
+> 堆排序的算法主要的难点是如果构建最小堆和最大堆。
 
 > **Note:** 堆排序算法的主要操作为：
 >
-> 1. 构建最大堆/最小堆 (参见：[最大堆的构建]()/[最小堆的构建]()) 
+> 1. 构建最大堆/最小堆 (参见：[最大堆的构建](https://github.com/duanqiaobb/interview/tree/master/datastruct#非递归实现)/[最小堆的构建](https://github.com/duanqiaobb/interview/tree/master/datastruct#非递归实现)) 
 >
 > 2. 调整最大堆/最小堆 (参见：[调整最大堆]()/[调整最小堆]())
 

@@ -161,3 +161,4 @@ def construct_maxheap(arr):
        return heap
    ```
 
+> **Note:**  `python` 实现堆构建算法的时候需要注意`python` 的可变对象和不可变对象。

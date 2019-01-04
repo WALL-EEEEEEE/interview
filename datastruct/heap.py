@@ -99,8 +99,12 @@ def construct_maxheap(arr):
             heap.value = v
     return heap
 
-def construct_maxheap_recursive(arr):
-    construct_maxheap_recursive(arr)
-    pass
-def construct_minheap_recursive(arr):
-    pass
+if __name__ == "__main__":
+    arr = [3, 2, 1, 3, 4]
+    print("Construct heap norecursively:")
+    max_heap = construct_maxheap(arr)
+    min_heap = construct_minheap(arr)
+    print("max_heap:")
+    print(max_heap)
+    print("min_heap:")
+    print(min_heap)
